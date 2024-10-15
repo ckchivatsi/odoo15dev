@@ -9,6 +9,7 @@ class HospitalPatient(models.Model):
     ref = fields.Char(string='Reference')
     age = fields.Integer(string='Age')
     gender = fields.Selection([
-        ('male', 'Male'),
-        ('female', 'Female')
-    ], string='Gender')
+            ('male', 'Male'),
+            ('female', 'Female')
+        ], string='Gender')
+    active = fields.Boolean(string='Active' default=True)
