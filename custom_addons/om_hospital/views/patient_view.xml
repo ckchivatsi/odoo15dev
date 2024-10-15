@@ -2,11 +2,12 @@
 <odoo>
 
     <record id="view_hospial_patient_tree" model="ir.ui.view">
-        <field name="name">hospitl.patient.tree</field>
+        <field name="name">hospital.patient.tree</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name" string="Patient Name"/>
+                <field name="ref"/>
                 <field name="age"/>
                 <field name="gender"/>
             </tree>
@@ -14,7 +15,7 @@
     </record>
 
     <record id="view_hospial_patient_form" model="ir.ui.view">
-        <field name="name">hospitl.patient.form</field>
+        <field name="name">hospital.patient.form</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form>
@@ -25,11 +26,26 @@
                             <field name="age"/>
                         </group>
                         <group>
+                            <field name="ref"/>
                             <field name="gender"/>
                         </group>
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="view_hospial_patient_search" model="ir.ui.view">
+        <field name="name">hospital.patient.search</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search>
+                <field 
+                    name="name" 
+                    string="Patient Name or Reference" 
+                    filter_domain="['|', ('name', 'ilike', self), ('ref', 'ilike', self)]"
+                />
+            </search>
         </field>
     </record>
 
